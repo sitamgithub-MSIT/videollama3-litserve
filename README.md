@@ -36,7 +36,7 @@ Now, you can see the model's output based on the input request. The model will g
 
 ## Usage
 
-The project can be used to serve the VideoLLaMA 3 model using LitServe. It allows you to input a video and a question then get the model's answer. It suggests potential uses in video analysis, visual question answering, and more.
+The project can be used to serve the VideoLLaMA 3 model using LitServe. It allows you to input a video and a question and then get the model's answer. It suggests potential uses in video analysis, visual question answering, and more.
 
 ## Contributing
 
