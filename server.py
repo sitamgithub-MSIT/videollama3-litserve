@@ -9,9 +9,9 @@ class VideoLLaMA3API(ls.LitAPI):
 
     Methods:
         - setup(device): Initializes the model and processor with the specified device.
-        - decode_request(request): Decodes the incoming request to extract the inputs.
+        - decode_request(request): Convert the request payload to model input.
         - predict(conversation): Uses the model to generate a response for the given input video and question.
-        - encode_response(output): Encodes the generated response into a JSON format.
+        - encode_response(output): Convert the model output to a response payload.
     """
 
     def setup(self, device):
@@ -32,7 +32,7 @@ class VideoLLaMA3API(ls.LitAPI):
 
     def decode_request(self, request):
         """
-        Decodes the input request and prepares the conversation template.
+        Convert the request payload to conversation template for the model.
         """
         # Extract the video path and question from the request
         video_path = request.get("video_path")
@@ -60,7 +60,7 @@ class VideoLLaMA3API(ls.LitAPI):
 
     def predict(self, conversation):
         """
-        Generates a response for the given video and question.
+        Run inference and generate response for the given video and question inputs.
         """
         # Run with torch inference mode
         with torch.inference_mode():
@@ -84,9 +84,8 @@ class VideoLLaMA3API(ls.LitAPI):
 
     def encode_response(self, output):
         """
-        Encodes the given results into a dictionary format.
+        Convert the model output to a response payload.
         """
-        # Encode the response as JSON
         return {"response": output}
 
 
