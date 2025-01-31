@@ -1,6 +1,6 @@
 # VideoLLaMA3 LitServe
 
-[![Open In Studio](https://pl-bolts-doc-images.s3.us-east-2.amazonaws.com/app-2/studio-badge.svg)](https://lightning.ai/sitammeur/studios/videollama3-litserve)
+[![Open In Studio](https://pl-bolts-doc-images.s3.us-east-2.amazonaws.com/app-2/studio-badge.svg)](https://lightning.ai/sitammeur/studios/deploy-videollama-3-multimodal-model)
 
 [VideoLLaMA 3](https://huggingface.co/collections/DAMO-NLP-SG/videollama3-678cdda9281a0e32fe79af15) is a cutting-edge series of multimodal foundation models mastering image and video comprehension. Its advanced architecture enables superior processing and interpretation of visual data in diverse settings. These models tackle complex challenges like integrating text and visuals, analyzing video sequences, and performing high-level reasoning across static and dynamic scenes. This project shows how to create a self-hosted, private API that deploys the VideoLLaMA 3 [multimodal model](https://huggingface.co/DAMO-NLP-SG/VideoLLaMA3-2B) with LitServe, an easy-to-use, flexible serving engine for AI models built on FastAPI.
 

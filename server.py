@@ -38,8 +38,8 @@ class VideoLLaMA3API(ls.LitAPI):
         video_path = request.get("video_path")
         question = request.get("question")
 
-        # Prepare the conversation input for the model
-        conversation = [
+        # Prepare the conversation template
+        return [
             {"role": "system", "content": "You are a helpful assistant."},
             {
                 "role": "user",
@@ -56,7 +56,6 @@ class VideoLLaMA3API(ls.LitAPI):
                 ],
             },
         ]
-        return conversation
 
     def predict(self, conversation):
         """
@@ -79,8 +78,7 @@ class VideoLLaMA3API(ls.LitAPI):
 
             # Generate a response from the model
             output_ids = self.model.generate(**inputs, max_new_tokens=128)
-            response = self.processor.batch_decode(output_ids, skip_special_tokens=True)[0].strip()
-            return response
+            return self.processor.batch_decode(output_ids, skip_special_tokens=True)[0].strip()
 
     def encode_response(self, output):
         """
