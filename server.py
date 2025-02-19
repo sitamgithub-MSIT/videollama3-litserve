@@ -19,10 +19,11 @@ class VideoLLaMA3API(ls.LitAPI):
         Sets up the model and processor for the task.
         """
         model_name = "DAMO-NLP-SG/VideoLLaMA3-2B"
+        self.device = device
         self.model = AutoModelForCausalLM.from_pretrained(
             model_name,
             trust_remote_code=True,
-            device_map={"": device},
+            device_map={"": self.device},
             torch_dtype=torch.bfloat16,
             attn_implementation="flash_attention_2",
         )
@@ -70,7 +71,7 @@ class VideoLLaMA3API(ls.LitAPI):
                 return_tensors="pt",
             )
             inputs = {
-                k: v.to(self.device) if isinstance(v, torch.Tensor) else v
+                k: v.to(self.model.device) if isinstance(v, torch.Tensor) else v
                 for k, v in inputs.items()
             }
             if "pixel_values" in inputs:
@@ -88,7 +89,7 @@ class VideoLLaMA3API(ls.LitAPI):
 
 
 if __name__ == "__main__":
-    # Create an instance of the VideoLLaMA3API and run the LitServer
+    # Create an instance of the VideoLLaMA3API and run the server
     api = VideoLLaMA3API()
     server = ls.LitServer(api, track_requests=True)
     server.run(port=8000)
